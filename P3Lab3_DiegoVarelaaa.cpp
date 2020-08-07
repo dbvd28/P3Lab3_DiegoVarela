@@ -23,15 +23,17 @@ int main()
         {
             string nombre, ubicacion;
             int pisos, estantes, secciones;
-            cout << "Escriba el nombre de la biblioteca: "<<endl;
+            cout << "Escriba el nombre de la biblioteca: " << endl;
             getline(cin, nombre);
-            cout << "Escriba el ubicacion de la biblioteca: "<<endl;
+            getline(cin, nombre);
+            cout << "Escriba el ubicacion de la biblioteca: " << endl;
             getline(cin, ubicacion);
-            cout << "Introduzca el numero de pisos: "<<endl;
+            getline(cin, ubicacion);
+            cout << "Introduzca el numero de pisos: " << endl;
             cin >> pisos;
-            cout << "Introduzca el numero de estantes: "<<endl;
+            cout << "Introduzca el numero de estantes: " << endl;
             cin >> estantes;
-            cout << "Introduzca el numero de secciones: "<<endl;
+            cout << "Introduzca el numero de secciones: " << endl;
             cin >> secciones;
             Bibliotecas.push_back(new Bilioteca(pisos, estantes, secciones, nombre, ubicacion));
         }
@@ -48,19 +50,21 @@ int main()
                 cout << Bibliotecas[i]->tostring();
             }
             int pisos, estantes, secciones;
-            cout << "En que biblioteca lo quiere agregar: "<<endl;
+            cout << endl;
+            cout << "En que biblioteca lo quiere agregar: " << endl;
             getline(cin, nombre_bib);
-            cout << "Introduzca el titulo del libro: "<<endl;
+            getline(cin, nombre_bib);
+            cout << "Introduzca el titulo del libro: " << endl;
             cin >> titulo;
-            cout << "Introduzca el nombre del autor: "<<endl;
+            cout << "Introduzca el nombre del autor: " << endl;
             cin >> autor;
-            cout << "Introduzca el año en que fue publicado: "<<endl;
+            cout << "Introduzca el año en que fue publicado: " << endl;
             cin >> anio;
-            cout << "Introduzca el numero de pisos: "<<endl;
+            cout << "Introduzca el numero de pisos: " << endl;
             cin >> pisos;
-            cout << "Introduzca el numero de estantes: "<<endl;
+            cout << "Introduzca el numero de estantes: " << endl;
             cin >> estantes;
-            cout << "Introduzca el numero de secciones: "<<endl;
+            cout << "Introduzca el numero de secciones: " << endl;
             cin >> secciones;
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
@@ -75,7 +79,8 @@ int main()
         case 3:
         {
             string titulo = "";
-            cout << "Ingrese el titulo del libro que desea buscar: "<<endl;
+            cout << "Ingrese el titulo del libro que desea buscar: " << endl;
+            getline(cin, titulo);
             getline(cin, titulo);
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
@@ -86,7 +91,8 @@ int main()
         case 4:
         {
             string autor = "";
-            cout << "Ingrese el autor del libro que desea buscar: "<<endl;
+            cout << "Ingrese el autor del libro que desea buscar: " << endl;
+            getline(cin, autor);
             getline(cin, autor);
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
@@ -102,13 +108,14 @@ int main()
             {
                 cout << Bibliotecas[i]->tostring();
             }
-            cout << "En que biblioteca lo quiere agregar: "<<endl;
+            cout << "En que biblioteca lo quiere agregar: " << endl;
             getline(cin, nombre_bib);
-            cout << "Introduzca el numero de pisos: "<<endl;
+            getline(cin, nombre_bib);
+            cout << "Introduzca el numero de pisos: " << endl;
             cin >> pisos;
-            cout << "Introduzca el numero de estantes: "<<endl;
+            cout << "Introduzca el numero de estantes: " << endl;
             cin >> estantes;
-            cout << "Introduzca el numero de secciones: "<<endl;
+            cout << "Introduzca el numero de secciones: " << endl;
             cin >> secciones;
         }
         break;

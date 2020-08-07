@@ -46,7 +46,7 @@ public:
 
                 for (int z = 0; z < secciones; z++)
                 {
-                    vector<Libro *> libros = lista_biblioteca[x][y][z]->getlibro();
+                    vector<Libro*> libros = lista_biblioteca[x][y][z]->getlibro();
                     for (int i = 0; i < libros.size(); i++)
                     {
                         if (_titulo == libros[i]->gettitulo())
