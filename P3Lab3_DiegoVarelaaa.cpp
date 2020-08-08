@@ -76,24 +76,36 @@ int main()
         case 3:
         {
             string titulo = "";
+            bool encontrado = false();
             cout << "Ingrese el titulo del libro que desea buscar: " << endl;
             getline(cin, titulo);
             getline(cin, titulo);
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
+                encontrado = true;
                 Bibliotecas[i]->getlibroportitulo(titulo);
+            }
+            if (encontrado == false)
+            {
+                cout << "Biblioteca no encontrada." << endl;
             }
         }
         break;
         case 4:
         {
             string autor = "";
+            bool encontrado = false();
             cout << "Ingrese el autor del libro que desea buscar: " << endl;
             getline(cin, autor);
             getline(cin, autor);
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
+                encontrado = true;
                 Bibliotecas[i]->getlibroporautor(autor);
+            }
+            if (encontrado == false)
+            {
+                cout << "Biblioteca no encontrada." << endl;
             }
         }
         break;
@@ -104,7 +116,8 @@ int main()
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
                 cout << Bibliotecas[i]->tostring();
-            }cout<<endl;
+            }
+            cout << endl;
             cout << "En que biblioteca desea buscar: " << endl;
             getline(cin, nombre_bib);
             getline(cin, nombre_bib);
@@ -114,23 +127,30 @@ int main()
             cin >> estantes;
             cout << "Introduzca el numero de secciones " << endl;
             cin >> secciones;
-            string nombre_temp="";
-              vector<Libro *> ordenamiento;
+            string nombre_temp = "";
+            vector<Libro *> ordenamiento;
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
                 if (nombre_bib == Bibliotecas[i]->getnombre())
                 {
-                    nombre_temp=Bibliotecas[i]->getnombre();
-                  ordenamiento = Bibliotecas[i]->ordenaralfabeticamente(pisos,estantes, secciones);
+                    nombre_temp = Bibliotecas[i]->getnombre();
+                    ordenamiento = Bibliotecas[i]->ordenaralfabeticamente(pisos, estantes, secciones);
                 }
             }
-            for (int i = 0; i < ordenamiento.size(); i++)
+            if (nombre_bib == "")
             {
-                cout << "Titulo: " << ordenamiento[i]->gettitulo() << endl;
-                cout << "Autor: " << ordenamiento[i]->getautor() << endl;
-                cout << "Anio: " << ordenamiento[i]->getanio() << endl;
-                cout << "Biblioteca: " << nombre_temp << endl;
-                cout << "Ubicado en el piso " << pisos << " del estante " << estantes << " de la seccion: " << secciones<< endl;
+                cout << "Biblioteca no encontrada." << endl;
+            }
+            else
+            {
+                for (int i = 0; i < ordenamiento.size(); i++)
+                {
+                    cout << "Titulo: " << ordenamiento[i]->gettitulo() << endl;
+                    cout << "Autor: " << ordenamiento[i]->getautor() << endl;
+                    cout << "Anio: " << ordenamiento[i]->getanio() << endl;
+                    cout << "Biblioteca: " << nombre_temp << endl;
+                    cout << "Ubicado en el piso " << pisos << " del estante " << estantes << " de la seccion: " << secciones << endl;
+                }
             }
         }
         break;
