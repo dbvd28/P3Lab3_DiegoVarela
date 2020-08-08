@@ -1,5 +1,4 @@
 #include <string>
-#include "string"
 #include <iostream>
 #include <vector>
 #include "Bilioteca.hpp"
@@ -21,14 +20,15 @@ int main()
         {
         case 1:
         {
-            string nombre, ubicacion;
-            int pisos, estantes, secciones;
+            string nombre = "";
+            string ubicacion = "";
+            int pisos = 0;
+            int estantes = 0;
+            int secciones = 0;
             cout << "Escriba el nombre de la biblioteca: " << endl;
-            getline(cin, nombre);
-            getline(cin, nombre);
+            cin >> nombre;
             cout << "Escriba el ubicacion de la biblioteca: " << endl;
-            getline(cin, ubicacion);
-            getline(cin, ubicacion);
+            cin >> ubicacion;
             cout << "Introduzca el numero de pisos: " << endl;
             cin >> pisos;
             cout << "Introduzca el numero de estantes: " << endl;
@@ -37,7 +37,6 @@ int main()
             cin >> secciones;
             Bibliotecas.push_back(new Bilioteca(pisos, estantes, secciones, nombre, ubicacion));
         }
-
         break;
         case 2:
         {
@@ -52,8 +51,7 @@ int main()
             int pisos, estantes, secciones;
             cout << endl;
             cout << "En que biblioteca lo quiere agregar: " << endl;
-            getline(cin, nombre_bib);
-            getline(cin, nombre_bib);
+            cin >> nombre_bib;
             cout << "Introduzca el titulo del libro: " << endl;
             cin >> titulo;
             cout << "Introduzca el nombre del autor: " << endl;
@@ -74,7 +72,6 @@ int main()
                 }
             }
         }
-
         break;
         case 3:
         {
@@ -107,18 +104,39 @@ int main()
             for (int i = 0; i < Bibliotecas.size(); i++)
             {
                 cout << Bibliotecas[i]->tostring();
-            }
-            cout << "En que biblioteca lo quiere agregar: " << endl;
+            }cout<<endl;
+            cout << "En que biblioteca desea buscar: " << endl;
             getline(cin, nombre_bib);
             getline(cin, nombre_bib);
-            cout << "Introduzca el numero de pisos: " << endl;
+            cout << "Introduzca el numero de piso: " << endl;
             cin >> pisos;
-            cout << "Introduzca el numero de estantes: " << endl;
+            cout << "Introduzca el numero de estante: " << endl;
             cin >> estantes;
-            cout << "Introduzca el numero de secciones: " << endl;
+            cout << "Introduzca el numero de secciones " << endl;
             cin >> secciones;
+            string nombre_temp="";
+              vector<Libro *> ordenamiento;
+            for (int i = 0; i < Bibliotecas.size(); i++)
+            {
+                if (nombre_bib == Bibliotecas[i]->getnombre())
+                {
+                    nombre_temp=Bibliotecas[i]->getnombre();
+                  ordenamiento = Bibliotecas[i]->ordenaralfabeticamente(pisos,estantes, secciones);
+                }
+            }
+            for (int i = 0; i < ordenamiento.size(); i++)
+            {
+                cout << "Titulo: " << ordenamiento[i]->gettitulo() << endl;
+                cout << "Autor: " << ordenamiento[i]->getautor() << endl;
+                cout << "Anio: " << ordenamiento[i]->getanio() << endl;
+                cout << "Biblioteca: " << nombre_temp << endl;
+                cout << "Ubicado en el piso " << pisos << " del estante " << estantes << " de la seccion: " << secciones<< endl;
+            }
         }
         break;
+        case 6:
+            dentro_menu = false;
+            break;
         }
     }
 }

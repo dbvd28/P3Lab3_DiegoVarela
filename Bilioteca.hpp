@@ -2,6 +2,7 @@
 #define BILIOTECA_H
 #include "Catalago.hpp"
 #include <string>
+#include <cstring>
 using namespace std;
 class Bilioteca
 {
@@ -46,16 +47,17 @@ public:
 
                 for (int z = 0; z < secciones; z++)
                 {
-                    vector<Libro*> libros = lista_biblioteca[x][y][z]->getlibro();
+                    vector<Libro *> libros = lista_biblioteca[x][y][z]->getlibro();
                     for (int i = 0; i < libros.size(); i++)
                     {
                         if (_titulo == libros[i]->gettitulo())
                         {
-                            cout << "Titulo: " << libros[i]->gettitulo();
-                            cout << "Autor: " << libros[i]->getautor();
-                            cout << "Año: " << libros[i]->getanio();
-                            cout << "Biblioteca: " << nombre << endl;
-                            cout << "Ubicado en el piso " << x << " del estante " << y << " de la seccion: " << z;
+                            cout << "Titulo: " << libros[i]->gettitulo() << endl;
+                            cout << "Autor: " << libros[i]->getautor() << endl;
+                            cout << "Anio: " << libros[i]->getanio() << endl;
+                            cout << "Biblioteca: " << nombre << endl
+                                 << endl;
+                            cout << "Ubicado en el piso " << x << " del estante " << y << " de la seccion: " << z << endl;
                         }
                     }
                 }
@@ -77,24 +79,48 @@ public:
                     {
                         if (_autor == libros[i]->getautor())
                         {
-                            cout << "Titulo: " << libros[i]->gettitulo();
-                            cout << "Autor: " << libros[i]->getautor();
-                            cout << "Año: " << libros[i]->getanio();
+                            cout << "Titulo: " << libros[i]->gettitulo() << endl;
+                            cout << "Autor: " << libros[i]->getautor() << endl;
+                            cout << "Anio: " << libros[i]->getanio() << endl;
                             cout << "Biblioteca: " << nombre << endl;
-                            cout << "Ubicado en el piso " << x << " del estante " << y << " de la seccion: " << z;
+                            cout << "Ubicado en el piso " << x << " del estante " << y << " de la seccion: " << z << endl;
                         }
                     }
                 }
             }
         }
     }
+    vector<Libro *> ordenaralfabeticamente(int _pisos, int _estantes, int _secciones)
+    {
+        vector<Libro *> orden = lista_biblioteca[_pisos][_estantes][_secciones]->getlibro();
+        Libro* temporal;
+        for (int i = 0; i < orden.size(); i++)
+        {
+            for (int j = i + 1; j < orden.size(); j++)
+            {
+                if (orden[i]->gettitulo()>orden[j]->gettitulo())
+                {
+                    temporal=orden[i];
+                    orden[i]=orden[j];
+                    orden[j]=temporal;
+                }
+            }
+        }
+        return orden;
+    }
     //setters
     void agregarlibro1(int _pisos, int _estantes, int _secciones, string _titulo, string _autor, string _anio)
     {
         lista_biblioteca[_pisos][_estantes][_secciones]->agregarlibro(_titulo, _autor, _anio);
     }
-    void setnombre(string _nombre) { nombre = _nombre; }
-    void setubicacion(string _ubicacion) { ubicacion = _ubicacion; }
+    void setnombre(string _nombre)
+    {
+        nombre = _nombre;
+    }
+    void setubicacion(string _ubicacion)
+    {
+        ubicacion = _ubicacion;
+    }
     //destructor
     ~Bilioteca()
     {
