@@ -141,16 +141,13 @@ int main()
             {
                 cout << "Biblioteca no encontrada." << endl;
             }
-            else
+            for (int i = 0; i < ordenamiento.size(); i++)
             {
-                for (int i = 0; i < ordenamiento.size(); i++)
-                {
-                    cout << "Titulo: " << ordenamiento[i]->gettitulo() << endl;
-                    cout << "Autor: " << ordenamiento[i]->getautor() << endl;
-                    cout << "Anio: " << ordenamiento[i]->getanio() << endl;
-                    cout << "Biblioteca: " << nombre_temp << endl;
-                    cout << "Ubicado en el piso " << pisos << " del estante " << estantes << " de la seccion: " << secciones << endl;
-                }
+                cout << "Titulo: " << ordenamiento[i]->gettitulo() << endl;
+                cout << "Autor: " << ordenamiento[i]->getautor() << endl;
+                cout << "Anio: " << ordenamiento[i]->getanio() << endl;
+                cout << "Biblioteca: " << nombre_temp << endl;
+                cout << "Ubicado en el piso " << pisos << " del estante " << estantes << " de la seccion: " << secciones << endl;
             }
         }
         break;
